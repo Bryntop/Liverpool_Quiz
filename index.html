@@ -1,3 +1,4 @@
+<!-- blanked out -->
 <!DOCTYPE htlm>
 <htlm lang='en'>
 
@@ -12,18 +13,51 @@
 <body>
 	<h1>Liverpool FC Big Quiz</h1>
 
-	<div class="quiz-container">
-  		<div id="quiz"></div>
+	<div class="container">
+
+		<main>
+			<div class="start-page">
+				<h2>Introduction:</h2>
+				<p>This quiz will test your knowlegde on Liverpool FC, you will answer 5 multiple questions </p>
+				<p>Press start and good luck!</p>
+				<form name="start-game">
+					<button type="submit">Start</button>
+				</form>
+			</div>
+
+			<div class="question-page">
+				<h3><div class="question-count"></div><div class="question-text"></div></h3>
+				<form name="current-question">
+					<ol type="A" class="choices"></ol>
+					<button type="submit">Submit</button>
+					<button class="restart-game">Start again</button>
+				</form>
+			</div>
+
+			<div class="answer-feedback-page">
+				<div class="feedback-container">
+					<div class="feedback-header"></div>
+					<p class="feeback-text"></p>
+					<button class="see-next"></button>
+				</div>	
+			</div>
+
+			<div class="final-feedback-page">
+				<h2>Results</h2>
+				<p class="results-text"></p>
+				<button class="restart-game">Start again</button>
+			</div>
+		</main>
 	</div>
 
-<button id="previous">Previous Question</button>
-<button id="next">Next Question</button>
-<button id="submit">Submit Quiz</button>
-
-<div id="results">
-	
-</div>
-
+	<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" crossorigin="anonymous"></script>
+  	<script type="text/javascript" src="app.js"></script> 
 
 </body>
 
+
+
+<!-- 
+<button id="previous">Previous Question</button>
+<button id="next">Next Question</button>
+<button id="submit">Submit Quiz</button> -->
