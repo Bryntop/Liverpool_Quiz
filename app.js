@@ -153,6 +153,92 @@ function renderChoices(state, element) {
 };
 
 
+function renderAnswerfeedbackHeader(state, element) {
+	var html = state.lastAnswerCorrect ?
+	"<h5 class='user-was-correct'>correct</h5>" : 
+	"<h5 class='user-was-incorrect'>wrong!</h5>";
+	element.html(html);
+};
+
+function renderAnswerFeedbackText(state, element) {
+	var choices = state.lastAnswerCorrect ? state.praises : state.admonishments;
+	var text = choices[math.floor(state.feedbackRandom * choices.length)];
+	element.text(text);
+};
+
+function renderNextButtonText(state, element) {
+	var text = state.currentQuestionIndex < state.questions.length - 1 ?
+	"next" : "how did i do?";
+	element.text(text);
+};
+
+function renderFinalFeedbackText(state, element) {
+	var text = "you got " + state.score + " out of " + 
+	state.questions.length + " questions right.";
+	element.text(text);
+};
+
+
+// action events 
+
+var PAGE_ELEMENTS = {
+	'start' : $('.start-page'),
+	'question': $('.question-page'),
+	'answer-feedback': $('.answer-feedback-page'),
+	'final-feedback': $('.final-feedback-page')
+};
+
+$("form[name='game-start']").submit(function(event) {
+	event.preventDefault();
+	setRoute(state, 'question');
+	renderApp(state, PAGE_ELEMENTS);
+
+});
+
+
+$(".restart-game").click(function(event){
+	even.preventDefault();
+	resetGame(state);
+	renderApp(state, PAGE_ELEMENTS);
+});
+
+$("form[name='current-question']").submit(function(event){
+	event.preventDefault();
+	var answer = $("input[name='user-answer']:checked").val();
+	answer = parseInt(answer, 10);
+	answerQuestion(state, answer);
+	renderApp(state, PAGE_ELEMENTS);
+});
+
+$(".see-next").click(function(event){
+	advance(state);
+	renderApp(state, PAGE_ELEMENTS);
+});
+
+$(function() {renderApp(state, PAGE_ELEMENTS); });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
